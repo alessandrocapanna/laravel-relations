@@ -6,8 +6,11 @@
     @foreach ($albums as $album)
       <div class="album">
         <img src="{{ $album->covers->url}}" alt="{{ $album->title }}">
-        <span>Titolo: {{ $album->titolo }}</span>
-        {{-- <span>{{ $album->artists}}</span> --}}
+
+        @foreach ($album->artists as $artist)
+          <p>{{ $artist->nome}}</p>
+        @endforeach
+
         <span>Articolo: {{ $album->artista }}</span>
         <span>Anno: {{ $album->anno }}</span>
         <a href="{{ route('album.show' , $album)}}"> dettagli</a>
